@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ragerest/ui/pages/home/home_screen.dart';
 
-void main() {
+Future<void> main() async {
   runApp(MyApp());
 }
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(),
+      home: HomeScreen(),
     );
   }
 }
