@@ -39,11 +39,43 @@ mixin _$Config on _Config, Store {
     });
   }
 
+  final _$requestAtom = Atom(name: '_Config.request');
+
+  @override
+  Request get request {
+    _$requestAtom.reportRead();
+    return super.request;
+  }
+
+  @override
+  set request(Request value) {
+    _$requestAtom.reportWrite(value, super.request, () {
+      super.request = value;
+    });
+  }
+
+  final _$themeAtom = Atom(name: '_Config.theme');
+
+  @override
+  ThemeData get theme {
+    _$themeAtom.reportRead();
+    return super.theme;
+  }
+
+  @override
+  set theme(ThemeData value) {
+    _$themeAtom.reportWrite(value, super.theme, () {
+      super.theme = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 stacks: ${stacks},
-requests: ${requests}
+requests: ${requests},
+request: ${request},
+theme: ${theme}
     ''';
   }
 }

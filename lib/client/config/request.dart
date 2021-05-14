@@ -16,6 +16,8 @@ class Request {
 
   Request(this.data);
 
+  send() {}
+
   static Request newRequest(String name, {String parent = BASE_STACK_NAME}) {
     return Request(Map.of({}));
     // Uri.parse(data.getVariableInjectedString("url", parent.variables));

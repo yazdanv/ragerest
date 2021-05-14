@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ragerest/client/config/config.dart';
 
 class RequestBodyWidget extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class RequestBodyWidget extends StatefulWidget {
 class _RequestBodyWidgetState extends State<RequestBodyWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: config.theme.primaryColor,
+    );
   }
 }

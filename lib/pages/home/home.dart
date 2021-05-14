@@ -1,5 +1,4 @@
 import 'package:mobx/mobx.dart';
-import 'package:ragerest/client/Home/request.dart';
 part 'home.g.dart';
 
 Home home = Home();
