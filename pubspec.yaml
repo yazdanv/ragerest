@@ -15,6 +15,7 @@ dependencies:
   http: ^0.13.3
   flutter_mobx: ^2.0.0
   mobx_codegen: ^2.0.0
+  json_serializable: ^4.1.2
 
 dev_dependencies:
   flutter_test:

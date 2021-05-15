@@ -69,6 +69,19 @@ mixin _$Config on _Config, Store {
     });
   }
 
+  final _$_ConfigActionController = ActionController(name: '_Config');
+
+  @override
+  dynamic changeTheme() {
+    final _$actionInfo =
+        _$_ConfigActionController.startAction(name: '_Config.changeTheme');
+    try {
+      return super.changeTheme();
+    } finally {
+      _$_ConfigActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

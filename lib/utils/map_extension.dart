@@ -49,3 +49,14 @@ extension MapAdminPanelExtensions on Map<String, dynamic> {
     return value;
   }
 }
+
+extension StringExtensions on String {
+  String injectVariables(List<Variable> variables) {
+    String value = this;
+    value = globalVariables.putVariables(value);
+    variables.forEach((element) {
+      value = element.putVariables(value);
+    });
+    return value;
+  }
+}

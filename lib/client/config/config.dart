@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:ragerest/client/config/request.dart';
+import 'package:ragerest/client/config/request/request.dart';
 import 'package:ragerest/utils/theme.dart';
 import 'request_stack.dart';
 part 'config.g.dart';
