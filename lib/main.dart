@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ragerest/pages/home/home_screen.dart';
 
 import 'client/config/config.dart';
+import 'client/config/request/request.dart';
 
 Future<void> main() async {
+  config.request = newRequest("test");
+  config.request.method = RequestMethod.GET;
   runApp(MyApp());
 }
 
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Rage Rest',
       debugShowCheckedModeBanner: false,
-      theme: config.theme,
+      theme: config.theme.mainTheme,
       home: HomeScreen(),
     );
   }

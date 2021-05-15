@@ -10,45 +10,64 @@ class RequestPaneWidget extends StatefulWidget {
   _RequestPaneWidgetState createState() => _RequestPaneWidgetState();
 }
 
-class _RequestPaneWidgetState extends State<RequestPaneWidget> {
+class _RequestPaneWidgetState extends State<RequestPaneWidget>
+    with SingleTickerProviderStateMixin {
+  TabController controller;
+
+  initState() {
+    super.initState();
+    controller = TabController(
+        length: tabsList().length,
+        initialIndex: config.request.selectedTab,
+        vsync: this);
+    controller.addListener(() {
+      config.request.selectedTab = controller.index;
+    });
+  }
+
   List<Widget> tabWidgets() {
-    return List.of({RequestBodyWidget()});
+    return List.of({
+      RequestBodyWidget(),
+      RequestBodyWidget(),
+      RequestBodyWidget(),
+      RequestBodyWidget(),
+      RequestBodyWidget()
+    });
   }
 
   List<Widget> tabsList() {
-    return List.of({
-      Text(
-        "Body",
-        style: config.theme.textTheme.headline5,
-      )
-    });
+    return List.of({"Body", "Query", "Header", "Auth", "Docs"})
+        .map((e) => Text(
+              e,
+              style: config.theme.textTheme.headline5,
+            ))
+        .toList();
   }
 
   Widget tabbarWidget() {
     var tabs = tabsList();
     return Container(
-      child: DefaultTabController(
-        length: tabs.length,
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(30),
-            child: Container(
-              color: config.theme.primaryColor,
-              child: SafeArea(
-                child: Column(
-                  children: <Widget>[
-                    Expanded(child: Container()),
-                    TabBar(
-                      tabs: tabs,
-                    ),
-                  ],
-                ),
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(30),
+          child: Container(
+            color: config.theme.primaryColor,
+            child: SafeArea(
+              child: Column(
+                children: <Widget>[
+                  Expanded(child: Container()),
+                  TabBar(
+                    tabs: tabs,
+                    controller: controller,
+                  ),
+                ],
               ),
             ),
           ),
-          body: TabBarView(
-            children: tabWidgets(),
-          ),
+        ),
+        body: TabBarView(
+          children: tabWidgets(),
+          controller: controller,
         ),
       ),
     );

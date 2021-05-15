@@ -1,5 +1,5 @@
 import 'config.dart';
-import 'request.dart';
+import 'request/request.dart';
 import 'variable.dart';
 
 class RequestStack {

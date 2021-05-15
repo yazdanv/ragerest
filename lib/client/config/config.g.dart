@@ -57,13 +57,13 @@ mixin _$Config on _Config, Store {
   final _$themeAtom = Atom(name: '_Config.theme');
 
   @override
-  ThemeData get theme {
+  LocalTheme get theme {
     _$themeAtom.reportRead();
     return super.theme;
   }
 
   @override
-  set theme(ThemeData value) {
+  set theme(LocalTheme value) {
     _$themeAtom.reportWrite(value, super.theme, () {
       super.theme = value;
     });

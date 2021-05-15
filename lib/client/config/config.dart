@@ -20,12 +20,12 @@ abstract class _Config with Store {
   Request request;
 
   @observable
-  ThemeData theme = mainTheme;
+  LocalTheme theme = darkTheme;
 
   @action
   changeTheme() {
-    theme = theme.copyWith(
-        textTheme: theme.textTheme.copyWith(
-            button: theme.textTheme.button.copyWith(color: Colors.green)));
+    // theme = theme.copyWith(
+    //     textTheme: theme.textTheme.copyWith(
+    //         button: theme.textTheme.button.copyWith(color: Colors.green)));
   }
 }
