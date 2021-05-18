@@ -55,16 +55,14 @@ class _RequestUrlWidgetState extends State<RequestUrlWidget> {
     return Container(
       child: TextField(
         controller: controller,
+        style: config.theme.textHeadline5,
       ),
     );
   }
 
   Widget sendButton() {
     return MaterialButton(
-      onPressed: () {
-        config.changeTheme();
-        // config.request?.send
-      },
+      onPressed: config.request?.send,
       child: Text(
         "Send",
         style: config.theme.textTheme.button,
@@ -74,6 +72,7 @@ class _RequestUrlWidgetState extends State<RequestUrlWidget> {
 
   @override
   Widget build(BuildContext context) {
+    controller.text = config.request.url;
     return Observer(builder: (_) {
       return Container(
         height: 50,

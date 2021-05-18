@@ -2,6 +2,7 @@ import '../request_stack.dart';
 import 'package:mobx/mobx.dart';
 import 'package:ragerest/utils/constants.dart';
 import 'package:ragerest/utils/map_extension.dart';
+import 'package:http/http.dart' as http;
 
 import '../config.dart';
 part 'request.g.dart';
@@ -19,6 +20,9 @@ abstract class _Request with Store {
   @observable
   RequestMethod method;
 
+  @observable
+  String response;
+
   int selectedTab = 0;
 
   _Request(
@@ -34,14 +38,19 @@ abstract class _Request with Store {
     return null;
   }
 
-  send() {}
+  @action
+  send() async {
+    var uri = Uri.parse(url);
+    var res = await http.get(uri);
+    response = res.body;
+  }
 }
 
 // Handler methods
 
 newRequest(String name, {String parent = BASE_STACK_NAME}) {
   return Request(name: name, id: parent + "/$name", parentId: parent);
-  // Uri.parse(data.getVariableInjectedString("url", parent.variables));
+  //
 }
 
 enum RequestMethod { GET, POST, PATCH, PUT, DELETE }

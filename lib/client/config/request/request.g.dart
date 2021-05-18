@@ -54,12 +54,35 @@ mixin _$Request on _Request, Store {
     });
   }
 
+  final _$responseAtom = Atom(name: '_Request.response');
+
+  @override
+  String get response {
+    _$responseAtom.reportRead();
+    return super.response;
+  }
+
+  @override
+  set response(String value) {
+    _$responseAtom.reportWrite(value, super.response, () {
+      super.response = value;
+    });
+  }
+
+  final _$sendAsyncAction = AsyncAction('_Request.send');
+
+  @override
+  Future send() {
+    return _$sendAsyncAction.run(() => super.send());
+  }
+
   @override
   String toString() {
     return '''
 name: ${name},
 url: ${url},
-method: ${method}
+method: ${method},
+response: ${response}
     ''';
   }
 }
